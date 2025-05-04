@@ -241,7 +241,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         if (height == 0) height = 1;
         glViewport(0, 0, width, height);
         //glMatrixMode(GL_PROJECTION);
-        //glMatrixMode(GL_2D);
+        glMatrixMode(GL_2D);
         //glLoadIdentity();
         //gluPerspective(45.0, (GLfloat)width / (GLfloat)height, 0.1, 100.0);
         //glMatrixMode(GL_MODELVIEW);
@@ -295,14 +295,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
            // PAINTSTRUCT ps;
             //HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Add any drawing code that uses hdc here...
+            glClear(GL_COLOR_BUFFER_BIT);
             glColor3f(1.0f, 0.0f, 0.0f);
-            //Rectangle(hDC, 50, 50, 200, 200);
-            glViewport(0, 0, 200, 200);
             glBegin(GL_TRIANGLES);
             glVertex2f(0.0f, 0.5f);
             glVertex2f(-0.5f, -0.5f);
             glVertex2f(0.5f, -0.5f);
             glEnd();
+            // swap front and back buffers
             SwapBuffers(hDC);
             ReleaseDC(hWnd, hDC);
 
